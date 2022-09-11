@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Erica+One&family=Libre+Barcode+128+Text&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ef3233;
+}
+
+.content {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  padding: 1%;
+}
+
+.title {
+  text-transform: uppercase;
+
+  line-height: 0.8;
+  /* color: #6b3232; */
+  color: black;
+  align-self: flex-end;
+  font-family: "Erica One", cursive;
+  margin-bottom: 6%;
+}
+
+.title h1 {
+  font-size: 8rem;
+}
+
+.title h2 {
+  font-size: 4rem;
+}
+
+.title h3 {
+  font-size: 2rem;
+  line-height: 0.4;
+  /* color: black; */
+}
+
+.responses {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 5%;
+
+  border: black solid 1px;
+  border-radius: 10px;
+  margin: 5%;
+}
+.responses a {
+  font-family: "Libre Barcode 128 Text", cursive;
+  text-decoration: none;
+  color: black;
+  font-size: 3rem;
+  padding: 10px;
+  height: 15%;
+}
+
+.responses a:hover {
+  border: black solid 1px;
+  border-radius: 10px;
+  background-color: black;
+  color: #ef3233;
+}
