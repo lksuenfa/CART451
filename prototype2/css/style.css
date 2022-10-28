@@ -1,0 +1,30 @@
+
+*{
+    margin:0;
+    padding: 0;
+}
+
+body{
+    background-color:var(--bkgColour);
+    font-family: var(--azo);
+}
+
+/* button default */
+.button:link {
+    padding: var(--button_padding);
+    text-decoration: none;
+    border-radius: var(--button-radius);
+    text-transform:uppercase;
+    font-weight: var(--thick);
+   
+}
+
+/* button colours */
+.button.red {
+    background-color: var(--accentRed);
+    color: var(--textColourLight);
+}
+
+.button.red:hover {
+    background-color: var(--accentTeal);
+}
