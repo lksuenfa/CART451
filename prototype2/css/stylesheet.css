@@ -1,24 +1,28 @@
-
-  @import url("https://use.typekit.net/zmy3jjm.css");
+@import url("https://use.typekit.net/zmy3jjm.css");
 
 :root {
-   /* palette  */
-   --bkgColour : #F5F3DE; /*beige*/
-   --textColourDark : black; 
-   --textColourLight : white; 
-   --accentYellow: #FFC531;  
-   --accentPink: #F4B6AD;
-   --accentBlue: #B5D3CD;
-   --accentTeal: #4E897D;
-   --accentRed: #E35349;
+  /* palette  */
+  --bkgColour: #F5F3DE;
 
-    /* fonts */
-    --dapifer : dapifer, serif;
-    --azo: azo-sans-web, sans-serif;
-    --thick:600;
+  --textColourDark: black;
+  --textColourLight: white;
 
-    /* buttons */
-    --button_padding: 5px 10px;
-    --button-radius : 30px;
+  --accentYellow: #FFC531;
+  --accentPink: #F4B6AD;
+  --accentBlue: #B5D3CD;
+  --accentTeal: #4E897D;
+  --accentRed: #E35349;
+
+  --yellowTransparent: rgb(255, 197, 49, 0.5);
+  --pinkTransparent: rgb(244, 182, 173, 0.5);
+  --blueTransparent: rgb(181, 211, 205, 0.5);
+
+  /* fonts */
+  --dapifer: dapifer, serif;
+  --azo: azo-sans-web, sans-serif;
+  --thick: 600;
+
+  /* buttons */
+  --button_padding: 5px 10px;
+  --button-radius: 30px;
 }
-

@@ -1,30 +1,38 @@
-
-*{
-    margin:0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color:var(--bkgColour);
-    font-family: var(--azo);
+body {
+  background-color: var(--bkgColour);
+  font-family: var(--azo);
+}
+
+nav {
+  padding: 2% 5%;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* button default */
 .button:link {
-    padding: var(--button_padding);
-    text-decoration: none;
-    border-radius: var(--button-radius);
-    text-transform:uppercase;
-    font-weight: var(--thick);
-   
+  padding: var(--button_padding);
+  text-decoration: none;
+  border-radius: var(--button-radius);
+  text-transform: uppercase;
+  /* font-weight: var(--thick); */
+  padding: 10px 30px;
 }
+
+
 
 /* button colours */
 .button.red {
-    background-color: var(--accentRed);
-    color: var(--textColourLight);
+  background-color: var(--accentRed);
+  color: var(--textColourLight);
 }
 
 .button.red:hover {
-    background-color: var(--accentTeal);
+  background-color: var(--accentTeal);
 }
