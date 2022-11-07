@@ -10,19 +10,61 @@ body {
 }
 
 nav {
+
+
   padding: 2% 5%;
   display: flex;
   justify-content: space-between;
 }
 
+.content {
+  padding: 0 5%;
+}
+
+.verticalPadding {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+input[type=text],
+input[type=number],
+input[type=url] {
+  background-color: var(--accentBlue);
+  border: none;
+  border-radius: 5px;
+  height: 20px;
+}
+
+input[type=number] {
+  width: 50px;
+}
+
+input[type=checkbox] {
+  background-color: var(--accentBlue);
+}
+
+select {
+  background-color: var(--bkgColour);
+  border-color: var(--accentBlue);
+}
+
+.content h1 {
+  font-family: var(--dapifer);
+  text-transform: uppercase;
+  font-size: 2rem;
+  padding-bottom: 2%;
+}
+
 /* button default */
-.button:link {
+.button:link,
+.button {
   padding: var(--button_padding);
   text-decoration: none;
   border-radius: var(--button-radius);
   text-transform: uppercase;
   /* font-weight: var(--thick); */
   padding: 10px 30px;
+  cursor: pointer;
 }
 
 
@@ -35,4 +77,38 @@ nav {
 
 .button.red:hover {
   background-color: var(--accentTeal);
+}
+
+.button.yellow {
+  background-color: var(--accentYellow);
+  color: var(--textColourLight);
+}
+
+.button.yellow:hover {
+  background-color: var(--accentTeal);
+}
+
+.button.teal {
+  background-color: var(--accentTeal);
+  color: var(--textColourLight);
+}
+
+.button.teal:hover {
+  background-color: var(--accentRed);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#myChart {
+  padding: 5%;
+
+}
+
+#chart-container {
+  height: 500px;
+  width: 500px;
 }
