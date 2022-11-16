@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "natural": "^5.2.3",
+    "wordnet-db": "^3.1.14"
+  }
+}
