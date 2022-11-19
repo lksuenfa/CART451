@@ -1,0 +1,30 @@
+.otherNames {
+    display: flex;
+    padding: 1% 0%;
+
+}
+
+.otherNames h3 {
+    padding-right: 10%;
+}
+
+#recipe-tags,
+#recipePrep {
+    display: flex;
+    padding: 1% 0%;
+    gap: 10px;
+}
+
+#recipePrep {
+    gap: 30px
+}
+
+#recipe-tags p {
+    border: 1px solid black;
+    border-radius: var(--button-radius);
+    padding: 5px 10px;
+}
+
+.list {
+    padding-left: 5%;
+}

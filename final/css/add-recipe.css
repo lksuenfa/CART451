@@ -1,0 +1,207 @@
+.content.add-recipe h1 {
+    color: var(--accentRed);
+
+}
+
+.content.add-recipe {
+    padding-bottom: 10vh;
+}
+
+.form label {
+    padding: 5px;
+}
+
+.criteriaType {
+    display: flex;
+}
+
+.criteria-title {
+    font-weight: 600;
+    padding-right: 5%;
+}
+
+.criteriaType label {
+    padding-right: 2%;
+}
+
+/* .options {
+    width: 80vw;
+} */
+
+/* custom checkbox 
+https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+ */
+
+/* The container */
+.container {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--accentBlue);
+    border-radius: 2px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+    background-color: grey;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+    background-color: var(--accentRed);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#form-story,
+#processMethod {
+    display: flex;
+    gap: 5px;
+}
+
+#form-story input,
+#processMethod input {
+    width: 55vw;
+    height: 20vh;
+
+}
+
+#addIngBtn {
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#ing-wrapper {
+    display: flex;
+    gap: 15px;
+    padding: 1% 0;
+}
+
+.ingName {
+    padding-right: 50px;
+}
+
+/* modal  */
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+.modal-content {
+    background-color: var(--accentPink);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content p {
+    padding-bottom: 5%;
+    font-size: 2rem;
+}
+
+.modal-content a {
+    margin: 20px;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#ing-container {
+    list-style-type: none;
+}
+
+#uploadPhoto {
+    border: 1px solid var(--accentBlue);
+    background-color: var(--accentBlue);
+    width: 40vw;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#saveRecipeBtn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+#checkBoxes {
+    width: 90vw;
+}
+
+#checkBoxes section {
+    padding-down: 5%;
+}
