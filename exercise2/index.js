@@ -60,15 +60,13 @@ for (let i = 0; i < nGramsfound.length; i++) {
     if (nGramsfound[i][0] == 'she') {
         console.log(nGramsfound[i][1]);
     }
+}
 
-
-// }
-
-// for (let i = 0; i < nGramsfound.length; i++) {
-//     if (nGramsfound[i][0] == 'she' && nGramsfound[i][1] == 'bare') {
-//         console.log(nGramsfound[i]);
-//     }
-// }
+for (let i = 0; i < nGramsfound.length; i++) {
+    if (nGramsfound[i][0] == 'she' && nGramsfound[i][1] == 'bare') {
+        console.log(nGramsfound[i]);
+    }
+}
 
 
 // console.log(natural.PorterStemmer.stem('words'));
