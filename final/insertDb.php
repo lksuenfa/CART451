@@ -27,7 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ingQtyUnit = $_POST['ingQtyUnits'];
 
     $process = $_POST['process'];
-    $otherTags = $_POST['otherTags'];
+
+    $tags = $_POST['tags'];
+
+    // $otherTags = $_POST['otherTags'];
     $origin = $_POST['origin'];
     $authorName = $_POST['authorName'];
     $authorLocation = $_POST['authorLocation'];
@@ -58,6 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ),
 
             "process" => $process,
+
+            "allTags" => array(
+                "tags" => $tags,
+            ),
 
             "origin" => $origin,
 
