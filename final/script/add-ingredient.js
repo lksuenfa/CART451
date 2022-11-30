@@ -21,6 +21,7 @@ addIngBtn.addEventListener("click", () => {
     let newInput_name = document.createElement("input");
     newList.appendChild(newInput_name);
     newInput_name.setAttribute("type", "text");
+    newInput_name.setAttribute("name", "ingName");
 
     // new label for ingredient qty
     let newIngQty = document.createElement("label");

@@ -20,8 +20,11 @@ $client = new MongoDB\Client(
 
 //      $db = $client->test;
 $recipe = $client->selectCollection('BiteOfLove', 'recipe');
-$document = $recipe->findOne(['name' => 'omelet']);
+$document = $recipe->findOne(['recipeName' => 'omelet']);
 
 var_dump($document);
+
+echo "hhhhh";
+echo $document['recipeName'];
 
 //  var_dump($colorGrps);

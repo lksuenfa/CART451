@@ -1,11 +1,81 @@
 <?php require "main/header.php" ?>
 
-<!-- content -->
+<script>
+    // here we put our JQUERY
+    $(document).ready(function() {
+        $("#addRecipeForm").submit(function(event) {
+            //stop submit the form, we will post it manually. PREVENT THE DEFAULT behaviour ...
+            event.preventDefault();
+            console.log("button clicked");
 
+            let form = $('#addRecipeForm')[0];
+            let data = new FormData(form);
+            /*console.log to inspect the data */
+            for (let pair of data.entries()) {
+                console.log(pair[0] + ', ' + pair[1]);
+
+            }
+            // let ingData = JSON.stringify(data.getAll("ingName"));
+            let ingNames = data.getAll("ingName");
+            data.append("ingNames", ingNames);
+
+            let ingQties = data.getAll("ingQty");
+            data.append("ingQties", ingQties);
+
+            let ingQtyUnits = data.getAll("ingQtyUnit");
+            data.append("ingQtyUnits", ingQtyUnits);
+
+            // let tags = data.getAll("ingQtyUnit");
+            // data.append("ingQtyUnits", ingQtyUnits);
+
+
+            // let ing
+            // console.log(JSON.stringify(data.getAll("ingName")));
+            /*https://api.jquery.com/jQuery.ajax/*/
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "insertDb.php",
+                data: data,
+                processData: false, //prevents from converting into a query string
+                /*contentType option to false is used for multipart/form-data forms that pass files.
+                When one sets the contentType option to false, it forces jQuery not to add a Content-Type header, otherwise, the boundary string will be missing from it.
+                Also, when submitting files via multipart/form-data, one must leave the processData flag set to false, otherwise, jQuery will try to convert your FormData into a string, which will fail. */
+
+                /*contentType: "application/x-www-form-urlencoded; charset=UTF-8", // this is the default value, so it's optional*/
+
+                contentType: false, //contentType is the type of data you're sending,i.e.application/json; charset=utf-8
+                cache: false,
+                timeout: 600000,
+                success: function(response) {
+                    //response is a STRING (not a JavaScript object -> so we need to convert)
+                    console.log("we had success!");
+                    console.log(response);
+                    //use the JSON .parse function to convert the JSON string into a Javascript object
+                    // let parsedJSON = JSON.parse(response);
+                    // console.log(parsedJSON);
+
+
+
+                },
+                error: function() {
+                    console.log("error occurred");
+                }
+            });
+        });
+
+
+
+
+
+    });
+</script>
+
+<!-- content -->
 <section class="content add-recipe">
 
     <h1>Add a new recipe</h1>
-    <form action="">
+    <form action="" id="addRecipeForm">
 
         <section id="form-name " class="form">
             <label for="recipeName" class="criteria-title">Recipe Name <span aria-label="required">* : </span>
@@ -74,13 +144,100 @@
             <input type="text" name="process">
         </section>
 
-        <?php require "search-criteria.php" ?>
+
+        <section id="checkboxes" class="verticalPadding">
+            <section class="criteriaType">
+                <p class="criteria-title">Meal</p>
+                <div class="options">
+                    <label class="container" for="tags"> breakfast
+                        <input type="checkbox" name="breakfast" value="breakfast">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container"> lunch
+                        <input type="checkbox" name="lunch" value="lunch">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container"> dinner
+                        <input type="checkbox" name="dinner" value="dinner">
+                        <span class="checkmark"></span>
+                    </label>
+
+
+                    <label class="container"> snack
+                        <input type="checkbox" name="snack" value="snack">
+                        <span class="checkmark"></span></label>
+                </div>
+            </section>
+
+
+            <section class="criteriaType">
+                <p class="criteria-title">Category</p>
+                <div class="options">
+                    <label class="container"> main dish
+                        <input type="checkbox" name="main dish" value="main dish">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container"> side dish
+                        <input type="checkbox" name="side dish" value="side dish">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container"> appetizer
+                        <input type="checkbox" name="appetizer" value="appetizer">
+                        <span class="checkmark"></span>
+                    </label>
+
+
+                    <label class="container"> dessert
+                        <input type="checkbox" name="dessert" value="dessert">
+                        <span class="checkmark"></span></label>
+
+
+
+                </div>
+            </section>
+
+            <section class="criteriaType">
+                <p class="criteria-title">Tags</p>
+                <div class="options">
+                    <label class="container"> vegetarian
+                        <input type="checkbox" name="vegetarian" value="vegetarian">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container"> vegan
+                        <input type="checkbox" name="vegan" value="vegan">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container"> nut-free
+                        <input type="checkbox" name="nut-free" value="nut-free">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container"> spicy
+                        <input type="checkbox" name="spicy" value="spicy">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label for="otherTags">Other : <input type="text" name="otherTags"></label>
+
+                </div>
+            </section>
+
+            <section>
+                <label for="origin" class="criteria-title">Origin <input type="text" name="origin"> </label>
+            </section>
+        </section>
 
         <section>
             <h2>Let the world know more about you</h2>
             <label for="authorName">Your Name : <span aria-label="required">*</span> <input type="text" name="authorName"> </label>
             <label for="authorLocation">Location : <input type="text" name="authorLocation"> <br></label>
-            <label for="authorURL">Personal website : <input type="url" name="authorURL"></label>
+            <!-- <label for="authorURL">Personal website : <input type="url" name="authorURL"></label> -->
 
         </section>
 
@@ -94,14 +251,14 @@
 
         <br>
 
+        <input type="submit" value="Save Recipe" id="saveRecipeBtn" class="button red">
 
     </form>
-    <input type="submit" value="Save Recipe" id="saveRecipeBtn" class="button red">
 
 
 </section>
 
-<section id="confirmation-save-recipe" class="modal">
+<!-- <section id="confirmation-save-recipe" class="modal">
     <div class="modal-content">
         <p>You recipe has been saved in our database</p>
 
@@ -112,5 +269,7 @@
 
     </div>
 
-</section>
+</section> -->
+
+
 <?php require "main/footer.php" ?>
