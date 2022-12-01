@@ -30,11 +30,17 @@ addIngBtn.addEventListener("click", () => {
     newIngQty.appendChild(labelText2);
     newIngQty.setAttribute("for", "ingQty");
 
+
+
+
     // new input for ingredient qty
     let newInput_qty = document.createElement("input");
     newList.appendChild(newInput_qty);
     newInput_qty.setAttribute("type", "number");
     newInput_qty.setAttribute("name", "ingQty");
+    newInput_qty.setAttribute("min", "0");
+    newInput_qty.setAttribute("max", "1000");
+    newInput_qty.setAttribute("step", "0.01");
 
     // new label for ingredient qty
     let newIngUnit = document.createElement("select");
@@ -44,7 +50,7 @@ addIngBtn.addEventListener("click", () => {
 
 
     // add units to select options
-    let units = ["g", "kg", "ml", "l", "cup", "unit"];
+    let units = ["g", "kg", "ml", "l", "cup", "unit", "tbsp", "tsp"];
 
     for (let i = 0; i < units.length; i++) {
         let newUnit = document.createElement("option");

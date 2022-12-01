@@ -115,7 +115,7 @@
                         <input type="text" name="ingName">
 
                         <label for="ingQty">Quantity :</label>
-                        <input type="number" name="ingQty">
+                        <input type="number" name="ingQty" min="0" step="0.01" max="1000">
                         <select name="ingQtyUnit" class="units">
                             <option value="g">g</option>
                             <option value="kg">kg</option>
@@ -123,6 +123,8 @@
                             <option value="l">L</option>
                             <option value="cup">cup</option>
                             <option value="unit">unit</option>
+                            <option value="unit">tbsp</option>
+                            <option value="unit">tsp</option>
                         </select>
                     </li>
 
@@ -259,7 +261,7 @@
 
 </section>
 
-<!-- <section id="confirmation-save-recipe" class="modal">
+<section id="confirmation-save-recipe" class="modal">
     <div class="modal-content">
         <p>You recipe has been saved in our database</p>
 
@@ -270,7 +272,7 @@
 
     </div>
 
-</section> -->
+</section>
 
 
 <?php require "main/footer.php" ?>

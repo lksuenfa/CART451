@@ -1,15 +1,7 @@
 
 
 <?php
-
-require_once __DIR__ . '/vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-$client = new MongoDB\Client(
-    'mongodb+srv://' . $_ENV['MDB_USER'] . ':' . $_ENV['MDB_PASS'] . '@' . $_ENV['ATLAS_CLUSTER_SRV'] . '/?retryWrites=true&w=majority'
-);
-
+require('openDB.php');
 
 //check if there has been something posted to the server to be processed
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -30,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $tags = $_POST['tags'];
 
-    // $otherTags = $_POST['otherTags'];
+
     $origin = $_POST['origin'];
     $authorName = $_POST['authorName'];
     $authorLocation = $_POST['authorLocation'];
@@ -41,57 +33,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //echo "path to file uploaded: ".$_FILES['filename']['tmp_name']. "<br />";
         $fname = $_FILES['filename']['name'];
         move_uploaded_file($_FILES['filename']['tmp_name'], "assets/images/" . $fname);
-        $recipe = $client->selectCollection('BiteOfLove', 'recipe');
 
+        try {
+            /*The data from the text box is potentially unsafe; 'tainted'. Use the quote() - puts quotes around things..
+               It escapes a string for use as a query parameter.
+               This is common practice to avoid malicious sql injection attacks.
+               PDO::quote() places quotes around the input string (if required)
+               and escapes special characters within the input string, using a quoting style appropriate to the underlying driver. */
+            // $artist_es = $file_db->quote($artist);
+            // $title_es = $file_db->quote($title);
+            // $loc_es = $file_db->quote($loc);
+            // $description_es = $file_db->quote($description);
+            // $creationDate_es = $file_db->quote($creationDate);
+            // the file name with correct path
+            $imageWithPath = "assets/images/" . $fname;
+            // $rnNum = rand(5, 100);
 
+            $queryInsert = "INSERT INTO recipeCollection(recipeName,otherName,descript,story,numServing,prepTime,cookingTime,ingNames,ingQties,ingQtyUnits,process,allTags,origin,authorName,authorLocation,recipeImg)VALUES ('$recipeName' ,'$otherName' ,'$description' , '$story' , 'intval($numServing)' ,'intval($prepTime)' , 'intval($cookingTime)' , '$ingName', 'intval($ingQty)', '$ingQtyUnit', '$process', '$tags', '$origin' , '$authorName' , '$authorLocation', '$imageWithPath')";
+            // $queryInsert = "INSERT INTO recipeCollection(recipeName)VALUES('$recipeName')";
 
-        $document = array(
-            "recipeName" => $recipeName,
-            "otherName" => $otherName,
-            "description" => $description,
-            "story" => $story,
-            "numServing" => $numServing,
-            "prepTime" => $prepTime,
-            "cookingTime" => $cookingTime,
+            $file_db->exec($queryInsert);
+            $file_db = null;
+            echo ("done");
+            exit;
+        } catch (PDOException $e) {
+            // Print PDOException message
+            echo $e->getMessage();
+        }
 
-            "ing" =>  array(
-                "ingNames" => $ingName,
-                "ingQties" => $ingQty,
-                "ingQtyUnits" => $ingQtyUnit
-            ),
-
-            "process" => $process,
-
-            "allTags" => array(
-                "tags" => $tags,
-            ),
-
-            "origin" => $origin,
-
-            "authorName" => $authorName,
-            "authorLocation" => $authorLocation,
-
-            "image" => $fname,
-        );
-
-        $recipe->insertOne($document);
-        // $recipe->insertMany($document);
-        echo "Document inserted successfully";
-        //package the data and echo back...
-        /* make  a new generic php object (note:: php also supports objects - 
-   but we are NOT doing that in this class - you can if you want ;)  )*/
-        // $myPackagedData = new stdClass();
-        // $myPackagedData->artist = $artist;
-        // $myPackagedData->title = $title;
-        // $myPackagedData->location = $loc;
-        // $myPackagedData->description = $description;
-        // $myPackagedData->creation_Date = $creationDate;
-        // $myPackagedData->fileName = $fname;
-        /* Now we want to JSON encode these values as a JSON string ..
-    to send them to $.ajax success  call back function... */
-        // $myJSONObj = json_encode($myPackagedData);
-        // echo $myJSONObj;
-        //  echo "done";
         exit();
     } //FILES
 }//POST

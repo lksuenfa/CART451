@@ -4,7 +4,9 @@
 <section class="content">
 
 
-    <?php require "search-options.php" ?>
+    <?php
+    require "search-options.php"
+    ?>
 
     <section id="catDish">
         <button>Omelet</button>
@@ -17,16 +19,6 @@
     </section>
 
     <div id="resultsContainer">
-
-
-        <section id="filter">
-            <form action="">
-                <?php require "search-criteria.php" ?>
-
-                <button type="submit">Filter</button>
-            </form>
-        </section>
-
         <section class="product-grid">
 
             <h2>Omelet</h2>
