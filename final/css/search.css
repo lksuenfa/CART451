@@ -173,3 +173,7 @@
 .grid-wrapper.upsell {
     padding: 0 5%;
 }
+
+.product h3 {
+    text-transform: uppercase;
+}

@@ -1,7 +1,19 @@
 let addIngBtn = document.querySelector("#addIngBtn");
 let container = document.querySelector("#ing-container");
+let form = document.querySelector("#addRecipeForm");
 
-addIngBtn.addEventListener("click", () => {
+
+// Prevent enter key from submitting the form
+//https://tutorial.eyehunts.com/js/prevent-form-submission-on-enter-key-press-example-code/
+form.addEventListener("keypress", (event) => {
+    let key = event.charCode || event.keyCode || 0;
+    if (key == 13) {
+        alert("Do not use Enter key");
+        event.preventDefault();
+    }
+})
+
+addIngBtn.addEventListener("click", (event) => {
     console.log("click");
 
     //    create new list item

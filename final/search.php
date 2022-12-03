@@ -1,100 +1,82 @@
-<?php require "main/header.php" ?>
+<?php
+
+require "main/header.php";
+
+// get the contents from the db and output. ..
+require('openDB.php');
+
+?>
 
 <!-- content -->
 <section class="content">
-
-
     <?php
-    require "search-options.php"
+    require "search-options.php";
     ?>
 
+    <!-- display all results by default -->
     <section id="catDish">
-        <button>Omelet</button>
-        <button>Chawanmushi</button>
-        <button>Frittata</button>
-        <button>Egg Drop Soup</button>
-        <button>Egg pudding</button>
-        <button>Egg curry</button>
-        <button>Egg and tomato stir fry</button>
+        <?php
+        try {
+            $sql_select = 'SELECT * FROM recipeCollection';
+            // the result set
+
+            $result = $file_db->query($sql_select);
+            if (!$result) die("Cannot execute query.");
+            // get a row...
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+                <button> <?php echo $row["descript"]; ?></button>
+        <?php
+            } //end while
+        } catch (PDOException $e) {
+            // Print PDOException message
+            echo $e->getMessage();
+        }
+
+        ?>
     </section>
 
     <div id="resultsContainer">
         <section class="product-grid">
 
-            <h2>Omelet</h2>
+            <h2>All results</h2>
 
             <div class="grid-wrapper">
+                <?php
 
+                try {
+                    $sql_select = 'SELECT * FROM recipeCollection';
+                    // the result set
 
-                <a href="recipe.php" class="product">
-                    <figure>
-                        <img src="assets/images/image.png" alt="">
+                    $result = $file_db->query($sql_select);
+                    if (!$result) die("Cannot execute query.");
+                    // get a row...
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                        <a href="recipe.php" class="product">
+                            <figure>
+                                <img src="<?php echo $row["recipeImg"]; ?>">
 
-                        <figcaption>
-                            <h3>Mushroom omelet</h3>
-                        </figcaption>
-                    </figure>
+                                <figcaption>
+                                    <h3> <?php echo $row["recipeName"]; ?></h3>
+                                </figcaption>
+                            </figure>
 
-                </a>
+                        </a>
+                <?php
+                    } //end while
+                } catch (PDOException $e) {
+                    // Print PDOException message
+                    echo $e->getMessage();
+                }
 
-                <a href="recipe.php" class="product">
-                    <figure>
-                        <img src="assets/images/image.png" alt="">
+                ?>
 
-                        <figcaption>
-                            <h3>Beetroot omelet</h3>
-                        </figcaption>
-                    </figure>
-
-                </a>
-
-                <a href="recipe.php" class="product">
-                    <figure>
-                        <img src="assets/images/image.png" alt="">
-
-                        <figcaption>
-                            <h3>Omurice</h3>
-                        </figcaption>
-                    </figure>
-
-                </a>
-
-                <a href="recipe.php" class="product">
-                    <figure>
-                        <img src="assets/images/image.png" alt="">
-
-                        <figcaption>
-                            <h3>Omurice</h3>
-                        </figcaption>
-                    </figure>
-
-                </a>
-
-                <a href="recipe.php" class="product">
-                    <figure>
-                        <img src="assets/images/image.png" alt="">
-
-                        <figcaption>
-                            <h3>Omurice</h3>
-                        </figcaption>
-                    </figure>
-
-                </a>
-
-                <a href="recipe.php" class="product">
-                    <figure>
-                        <img src="assets/images/image.png" alt="">
-
-                        <figcaption>
-                            <h3>Omurice</h3>
-                        </figcaption>
-                    </figure>
-
-                </a>
             </div>
 
         </section>
     </div>
 </section>
 
-<?php require "main/footer.php" ?>
+<?php require "main/footer.php";
+?>
