@@ -1,13 +1,9 @@
 <?php
-
 require "main/header.php";
-
-// get the contents from the db and output. ..
 require('openDB.php');
-
 ?>
 
-<!-- content -->
+
 <section class="content">
     <?php
     require "search-options.php";
@@ -18,22 +14,14 @@ require('openDB.php');
         <?php
         try {
             $sql_select = 'SELECT * FROM recipeCollection';
-            // the result set
-
             $result = $file_db->query($sql_select);
             if (!$result) die("Cannot execute query.");
-            // get a row...
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        ?>
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
                 <button> <?php echo $row["descript"]; ?></button>
-        <?php
-            } //end while
+        <?php } //end while
         } catch (PDOException $e) {
-            // Print PDOException message
-            echo $e->getMessage();
-        }
-
-        ?>
+            echo $e->getMessage(); // Print PDOException message
+        } ?>
     </section>
 
     <div id="resultsContainer">
@@ -43,17 +31,12 @@ require('openDB.php');
 
             <div class="grid-wrapper">
                 <?php
-
                 try {
                     $sql_select = 'SELECT * FROM recipeCollection';
-                    // the result set
-
                     $result = $file_db->query($sql_select);
                     if (!$result) die("Cannot execute query.");
-                    // get a row...
-                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                ?>
-                        <a href="recipe.php" class="product">
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <a href="recipe.php" class="product" id="<?php echo $row["recipeID"]; ?>">
                             <figure>
                                 <img src="<?php echo $row["recipeImg"]; ?>">
 
@@ -63,14 +46,10 @@ require('openDB.php');
                             </figure>
 
                         </a>
-                <?php
-                    } //end while
+                <?php } //end while
                 } catch (PDOException $e) {
-                    // Print PDOException message
-                    echo $e->getMessage();
-                }
-
-                ?>
+                    echo $e->getMessage(); // Print PDOException message
+                } ?>
 
             </div>
 
@@ -78,5 +57,4 @@ require('openDB.php');
     </div>
 </section>
 
-<?php require "main/footer.php";
-?>
+<?php require "main/footer.php"; ?>
