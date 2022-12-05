@@ -1,4 +1,4 @@
-<section class="product-grid upsell">
+<!-- <section class="product-grid upsell">
 
     <h2>Improve your meal</h2>
 
@@ -60,4 +60,4 @@
 
     </div>
 
-</section>
+</section> -->

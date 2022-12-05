@@ -2,6 +2,8 @@
 
 <section class="content">
 
+
+
     <section id="recipeHeader">
         <h1>Name of Dish</h1>
         <div class="otherNames">
@@ -54,6 +56,8 @@
 </section>
 
 <section id="dataviz">
+    <p id="demo"></p>
+
     <div id="chart-container">
         <canvas id="myChart"></canvas>
     </div>

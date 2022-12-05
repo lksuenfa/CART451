@@ -261,7 +261,7 @@
 
 </section>
 
-<section id="confirmation-save-recipe" class="modal">
+<!-- <section id="confirmation-save-recipe" class="modal">
     <div class="modal-content">
         <p>You recipe has been saved in our database</p>
 
@@ -272,7 +272,7 @@
 
     </div>
 
-</section>
+</section> -->
 
 
 <?php require "main/footer.php" ?>
