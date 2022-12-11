@@ -10,7 +10,8 @@ try {
 
 // $sql_delete = "DELETE FROM recipeCollection";
 
-$sql_delete = "DELETE FROM recipeCollection WHERE recipeID = '2'";
+$sql_delete = "DELETE FROM recipeCollection WHERE recipeID = '11'";
+// $sql_delete = "DELETE FROM recipeCollection WHERE recipeName = ''";
 $file_db->exec($sql_delete);
 echo ("DELETION successful");
 ?>

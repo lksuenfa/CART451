@@ -12,6 +12,8 @@ $(document).ready(function () {
 
     // submit form
     $("#searchForm").submit(function (event) {
+
+
         event.preventDefault();
         console.log("submit Search");
 
@@ -42,15 +44,27 @@ $(document).ready(function () {
                 let catDish = document.querySelector("#catDish");
                 let grid = document.querySelector("#grid-wrapper");
 
-                console.log(queryData.length);
+
                 for (let i = 0; i < queryData.length; i++) {
                     // create new button 
                     let newBtn = document.createElement("button");
                     // fill button with description text
-                    let node = document.createTextNode(queryData[i].descript);
-                    newBtn.appendChild(node);
-                    catDish.appendChild(newBtn);
 
+
+                    if (i == 0) {
+                        let node = document.createTextNode(queryData[i].descript);
+                        newBtn.appendChild(node);
+                        catDish.appendChild(newBtn);
+                    }
+
+                    if (i > 0) {
+                        // if general descript are similar to the one before do not show
+                        if (queryData[i].descript !== queryData[i - 1].descript) {
+                            let node = document.createTextNode(queryData[i].descript);
+                            newBtn.appendChild(node);
+                            catDish.appendChild(newBtn);
+                        }
+                    }
 
                     let newLink = document.createElement("a");
                     let newFig = document.createElement("figure");
@@ -65,9 +79,7 @@ $(document).ready(function () {
                     newLink.appendChild(newFig);
                     newFig.appendChild(newImg);
                     newImg.classList.add("productImg");
-                    // let imgPath = document.createTextNode(queryData[i].recipeImg);
                     let imgPath = queryData[i].recipeImg;
-                    console.log(imgPath);
                     let imgPathRev = imgPath.replace('"', '');
                     newImg.src = imgPathRev;
 
@@ -75,6 +87,34 @@ $(document).ready(function () {
                     newCaption.classList.add("productTitle");
                     let captionTxt = document.createTextNode(queryData[i].recipeName);
                     newCaption.appendChild(captionTxt);
+
+
+                    newBtn.addEventListener("click", () => {
+                        // console.log(queryData[i].descript);
+
+                        // delete all existing products
+                        let products = document.querySelectorAll(".product");
+                        products.forEach(item => {
+                            item.remove();
+                        })
+
+                        let clickedTag = queryData[i].descript;
+
+                        if (queryData[i].descript == clickedTag) {
+                            newLink.classList.add("product");
+
+                            grid.appendChild(newLink);
+                            newLink.appendChild(newFig);
+                            newFig.appendChild(newImg);
+                            newImg.classList.add("productImg");
+                            newImg.src = imgPathRev;
+                            newFig.appendChild(newCaption);
+                            newCaption.classList.add("productTitle");
+                        }
+
+
+                    });
+                    $("#searchForm")[0].reset();
                 }
             },
             error: function () {

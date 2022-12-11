@@ -4,7 +4,7 @@ $ch = curl_init();
 
 $api_key = "IkErL35mXB9OFGmycHgGNGqHgIXP1SZwdVf4GTxM";
 
-$var1 = "peas";
+$var1 = "ube";
 
 $url = "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=$api_key&query=$var1";
 

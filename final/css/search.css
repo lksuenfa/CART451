@@ -92,8 +92,10 @@
 #catDish {
     display: flex;
     gap: 20px;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 2% 0;
+    flex-wrap: wrap;
+    text-align: left;
 
 }
 

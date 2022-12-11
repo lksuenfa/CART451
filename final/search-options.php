@@ -100,6 +100,6 @@
 
 
     </form>
-    <button id="advSearchBtn">Advanced Search</button>
+    <button id="advSearchBtn"></button>
 
 </section>

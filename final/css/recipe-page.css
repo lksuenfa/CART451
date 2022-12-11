@@ -4,8 +4,28 @@
 
 }
 
+
+#viewRecipe {
+    display: flex;
+    gap: 30px;
+}
+
+.recipeText {
+    width: 50vw;
+}
+
+.recipeViewImg img {
+    width: auto;
+    height: 70vh;
+    margin: 10%;
+}
+
 .otherNames h3 {
     padding-right: 10%;
+}
+
+#storyRec {
+    padding: 3% 0;
 }
 
 #recipe-tags,

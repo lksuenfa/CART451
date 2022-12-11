@@ -1,5 +1,6 @@
 <?php
 require "main/header.php";
+require "main/nav.php";
 require('openDB.php');
 
 
@@ -26,99 +27,127 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             // echo $row["recipeID"];
 ?>
 
-            <section class="content">
-                <section id="recipeHeader">
-                    <h1><?php echo $row["recipeName"]; ?></h1>
-                    <div class="otherNames">
-                        <h3> <?php echo "Other Names : ";
-                                if ($row["otherName"]) {
-                                    echo $row["otherName"];
-                                } else echo "none";  ?></h3>
-                        <h3> <?php echo "General Description : " . $row["descript"];  ?></h3>
-                    </div>
-
-                </section>
-
-                <section id="recipe-tags">
-                    <?php
-                    // echo $row["allTags"];
+            <section class="content" id="viewRecipe">
+                <div class="recipeText">
+                    <section id="recipeHeader">
+                        <h1><?php echo $row["recipeName"]; ?></h1>
 
 
-                    // 
-                    $tags = explode(",", $row["allTags"]);
-                    // var_dump($tags);
-                    for ($i = 0; $i < count($tags) - 1; $i++) {
-                        echo "<p>" . $tags[$i] . "</p>";
-                    }
+                        <div class="otherNames">
+                            <h3> <?php echo "Other Names : ";
+                                    if ($row["otherName"]) {
+                                        echo $row["otherName"];
+                                    } else echo "none";  ?></h3>
+                            <h3> <?php echo "General Description : " . $row["descript"];  ?></h3>
+                        </div>
 
 
-                    ?>
 
-                </section>
+                    </section>
 
-                <section id="recipePrep">
 
-                    <h4>Servings:
-                        <span>
+                    <div>
+                        <section id="recipe-tags">
                             <?php
-                            $lhs = str_replace("intval(", " ", $row["numServing"]);
-                            $complete =  str_replace(")", " ", $lhs);
-                            echo $complete;
+                            // echo $row["allTags"];
+
+
+                            // 
+                            $tags = explode(",", $row["allTags"]);
+                            // var_dump($tags);
+                            for ($i = 0; $i < count($tags) - 1; $i++) {
+                                echo "<p>" . $tags[$i] . "</p>";
+                            }
+
+
                             ?>
-                        </span>
-                    </h4>
-                    <h4>Preparation time :
-                        <span>
-                            <?php
-                            $lhs = str_replace("intval(", " ", $row["prepTime"]);
-                            $complete =  str_replace(")", " ", $lhs);
-                            echo $complete . "min";
-                            ?>
-                        </span>
-                    </h4>
 
-                    <h4>Cooking time :
-                        <span>
-                            <?php
-                            $lhs = str_replace("intval(", " ", $row["cookingTime"]);
-                            $complete =  str_replace(")", " ", $lhs);
-                            echo $complete . "min";
-                            ?>
-                        </span>
-                    </h4>
+                        </section>
 
-                </section>
+                        <section id="recipePrep">
 
 
-                <section>
-                    <h2>Ingredients</h2>
+                            <h4>Servings:
+                                <span>
+                                    <?php
+                                    $lhs = str_replace("intval(", " ", $row["numServing"]);
+                                    $complete =  str_replace(")", " ", $lhs);
+                                    echo $complete;
+                                    ?>
+                                </span>
+                            </h4>
+                            <h4>Preparation time :
+                                <span>
+                                    <?php
 
-                    <div class="list">
-                        <?php
-                        $ingName = explode(",", $row["ingNames"]);
-                        $ingQtyUnits = explode(",", $row["ingQtyUnits"]);
+                                    $lhs = str_replace("intval(", " ", $row["prepTime"]);
+                                    $complete =  str_replace(")", " ", $lhs);
+                                    echo $complete . "min";
+                                    ?>
+                                </span>
+                            </h4>
 
-                        $lhs = str_replace("intval(", " ", $row["ingQties"]);
-                        $complete =  str_replace(")", " ", $lhs);
-                        $IngQty = explode(",", $complete);
+                            <h4>Cooking time :
+                                <span>
+                                    <?php
+                                    $lhs = str_replace("intval(", " ", $row["cookingTime"]);
+                                    $complete =  str_replace(")", " ", $lhs);
+                                    echo $complete . "min";
+                                    ?>
+                                </span>
+                            </h4>
+
+                        </section>
+
+                        <section id="storyRec">
+                            <h2>Story</h2>
+                            <p><?php echo $row["story"]; ?> </p>
+                        </section>
 
 
-                        for ($i = 0; $i < count($ingName); $i++) {
-                            echo "<p>" . $ingName[$i] . " " . $IngQty[$i] . " " . $ingQtyUnits[$i] . "</p>";
-                        }
-                        ?>
+                        <section>
+                            <h2>Ingredients</h2>
+
+                            <div class="list">
+                                <?php
+                                $ingName = explode(",", $row["ingNames"]);
+                                $ingQtyUnits = explode(",", $row["ingQtyUnits"]);
+
+                                $lhs = str_replace("intval(", " ", $row["ingQties"]);
+                                $complete =  str_replace(")", " ", $lhs);
+                                $IngQty = explode(",", $complete);
+
+                                // var_dump($IngQty);
+                                // echo "------";
+                                // var_dump($ingQtyUnits);
+
+                                for ($i = 0; $i < count($ingName); $i++) {
+
+                                    echo "<p>" . $ingName[$i] . " " . $IngQty[$i] . " " . $ingQtyUnits[$i] . "</p>";
+                                }
+                                ?>
+
+                            </div>
+                        </section>
+
+                        <section>
+                            <h2>Process</h2>
+
+                            <div class="list">
+                                <p><?php echo $row["process"]; ?> </p>
+
+                            </div>
+                        </section>
+
+
 
                     </div>
-                </section>
+                </div>
 
-                <section>
-                    <h2>Process</h2>
 
-                    <div class="list">
-                        <p><?php echo $row["process"]; ?> </p>
-
-                    </div>
-                </section>
+                <div class="recipeViewImg">
+                    <img src="<?php echo $row["recipeImg"] ?>" alt="">
+                </div>
             </section>
 
         <?php

@@ -1,5 +1,8 @@
 <?php
 require "main/header.php";
+require "main/nav.php";
+
+
 ?>
 
 
@@ -18,12 +21,12 @@ require "main/header.php";
     <div id="resultsContainer">
         <section class="product-grid">
 
-            <!-- <h2>All results</h2> -->
-
             <div class="grid-wrapper" id="grid-wrapper"></div>
 
         </section>
     </div>
 </section>
 
-<?php require "main/footer.php"; ?>
+<?php
+
+require "main/footer.php"; ?>
